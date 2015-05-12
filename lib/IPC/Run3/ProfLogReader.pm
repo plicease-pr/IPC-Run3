@@ -76,7 +76,9 @@ sub read {
     my $self = shift;
 
     my $fh = $self->{FH};
-    my @ln = split / /, <$fh>;
+    my $line = <$fh>;
+    return 0 unless defined $line;
+    my @ln = split / /, $line;
 
     return 0 unless @ln;
     return 1 unless $self->{Handler};
